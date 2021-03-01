@@ -8,10 +8,8 @@
 import Foundation
 
 protocol ArticleModelProtocol {
-    
     func articlesRetrieved(_articles:[Article])
-    
-    }
+}
 
 class ArticleModel {
     
