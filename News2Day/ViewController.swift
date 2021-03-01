@@ -94,9 +94,5 @@ extension ViewController: ArticleModelProtocol {
         
         //refresh the collectionView
         collectionView.reloadData()
-        
-        
     }
-    
-    
 }
