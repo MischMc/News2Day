@@ -7,24 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ArticleFeedVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var model = ArticleModel()
-    var articles = [Article]()
+    var articles = [ArticleKeys]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set the view controller as the data source and delegate of the collection View
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         
         // get the articles from the article model
-        
         model.delegate = self
         model.getArticles()
     }
@@ -33,15 +31,12 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-      // detect which indexPath the user selected
-        
-        
+        // detect which indexPath the user selected
         guard let indexPath = selectedIndexPath else {
-            
             //the user hasnt selected anything
-            
             return
         }
+        
         // get the article the user tapped
         let article = articles[indexPath.row]
         
@@ -54,7 +49,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ArticleFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -66,7 +61,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         // get a cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath)as!ArticleCell
         
-        //get the artile that the collectionview is asking about
+        //get the article that the collectionview is asking about
         let article = articles[indexPath.row]
         
         
@@ -79,14 +74,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
+        // user has just selected an item, trigger the segue to go to detail
+        performSegue(withIdentifier: "goToDetail", sender: self)
     }
     
 }
-extension ViewController: ArticleModelProtocol {
+extension ArticleFeedVC: ArticleModelProtocol {
     
     // MARK: - Article Model Protocol Methods
     
-    func articlesRetrieved(_articles: [Article]) {
+    func articlesRetrieved(_articles: [ArticleKeys]) {
         
         //set the articles property of the view controller to the articles passed back from the model
         

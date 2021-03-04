@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ArticleService:Decodable {
+struct JSONObjectOverview:Decodable {
     
     var totalResults: Int?
-    var articles: [Article]?
+    var articles: [ArticleKeys]?
 }

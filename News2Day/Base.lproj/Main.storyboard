@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Article FeedVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="News2Day" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ArticleFeedVC" customModule="News2Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,6 @@
                                         <connections>
                                             <outlet property="articleImageView" destination="3fD-Yu-Pv4" id="3mA-Nc-yoX"/>
                                             <outlet property="headlineLabel" destination="lw1-Jw-Y66" id="2ZB-JP-GoJ"/>
-                                            <segue destination="Udb-2V-gEr" kind="show" id="1GN-b8-YMJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -78,6 +77,7 @@
                     <navigationItem key="navigationItem" id="NI7-TH-Jg5"/>
                     <connections>
                         <outlet property="collectionView" destination="MHo-Wh-nMv" id="Tlg-Cq-4h7"/>
+                        <segue destination="Udb-2V-gEr" kind="show" identifier="goToDetail" id="Fm4-wS-RQM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -100,18 +100,24 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-pn-hbE">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gCq-h9-LVT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hyV-pn-hbE" firstAttribute="centerX" secondItem="Oxw-0I-qyv" secondAttribute="centerX" id="8Xp-Xd-uYc"/>
                             <constraint firstAttribute="bottom" secondItem="tbY-Nq-ADe" secondAttribute="bottom" id="KH1-Fd-Pre"/>
                             <constraint firstItem="tbY-Nq-ADe" firstAttribute="leading" secondItem="Oxw-0I-qyv" secondAttribute="leading" id="PPn-Az-R4K"/>
                             <constraint firstItem="tbY-Nq-ADe" firstAttribute="top" secondItem="gCq-h9-LVT" secondAttribute="top" id="lp1-yY-pWE"/>
                             <constraint firstAttribute="trailing" secondItem="tbY-Nq-ADe" secondAttribute="trailing" id="noa-vE-O7T"/>
+                            <constraint firstItem="hyV-pn-hbE" firstAttribute="centerY" secondItem="Oxw-0I-qyv" secondAttribute="centerY" id="xHB-2E-9lw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kq4-y6-Lda"/>
                     <connections>
+                        <outlet property="spinner" destination="hyV-pn-hbE" id="Ixu-iU-o4X"/>
                         <outlet property="webView" destination="tbY-Nq-ADe" id="Xfk-vw-TZu"/>
                     </connections>
                 </viewController>

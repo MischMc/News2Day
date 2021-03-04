@@ -14,13 +14,15 @@ class ArticleCell: UICollectionViewCell {
     
     @IBOutlet weak var articleImageView: UIImageView!
     
-    var articleToDisplay: Article?
+    var articleToDisplay: ArticleKeys?
     
-    func displayArticle(_article:Article) {
+    func displayArticle(_article:ArticleKeys) {
         
         //clean up the cell to display the image view
         articleImageView.image = nil
+        articleImageView.alpha = 0
         headlineLabel.text = ""
+        headlineLabel.alpha = 0
         
         //keep a reference to the article
         articleToDisplay = _article
@@ -28,6 +30,14 @@ class ArticleCell: UICollectionViewCell {
         
         //set the headline
         headlineLabel.text = articleToDisplay!.title
+        
+        //animate the label into view
+        UIView.animate(withDuration: 0.6, delay: 0, options:.curveEaseOut,
+             animations:{
+                
+                self.headlineLabel.alpha = 1
+                        
+            }, completion: nil)
         
         //download and display  the image
         
@@ -45,6 +55,14 @@ class ArticleCell: UICollectionViewCell {
             // there is image data, set the imageview and return (optional Binding)
             
             articleImageView.image = UIImage(data: imageData)
+            
+            UIView.animate(withDuration: 0.6, delay: 0, options:.curveEaseOut,
+                 animations:{
+                    
+                    self.articleImageView.alpha = 1
+                            
+                }, completion: nil)
+            
             return
         }
         
@@ -53,8 +71,8 @@ class ArticleCell: UICollectionViewCell {
         
         // check that the URL is not NIL
         guard url != nil else {
-            print("couldnt create a url object")
-            return
+        print("couldnt create a url object")
+         return
         }
         
         // get a URL Session
@@ -63,28 +81,35 @@ class ArticleCell: UICollectionViewCell {
         // create a Data task
         let dataTask = session.dataTask(with: url!) { [self] (data, response, error) in
             
-            // check that there were not errors
-            if error == nil && data != nil {
+        // check that there were not errors
+        if error == nil && data != nil {
                 
-                //save the data into Cache
-                CacheManager.saveData(urlString, data!)
+        //save the data into Cache
+        CacheManager.saveData(urlString, data!)
                 
-                //check that the url string that the data task went off to download matches the article is set to display
-                if articleToDisplay!.urlToImage == urlString {
-                    DispatchQueue.main.async {
-                        self.articleImageView.image = UIImage(data:data!)
-                        
-                    }
-                    
-                }//end if
-                
-                
-            } //end data task
+        //check that the url string that the data task went off to download matches the article is set to display
+        if articleToDisplay!.urlToImage == urlString {
+        DispatchQueue.main.async {
+        self.articleImageView.image = UIImage(data:data!)
             
-        }
+        UIView.animate(withDuration: 0.6, delay: 0, options:.curveEaseOut,
+                animations:{
+                    
+                self.articleImageView.alpha = 1
+                            
+            }, completion: nil)
+                        
+            }
+                    
+        }//end if
+                
+                
+    } //end data task
+            
+}
         
-    // kick off the data task
-            dataTask.resume()
+        // kick off the data task
+        dataTask.resume()
             
         }
     }
