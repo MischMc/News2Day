@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Article FeedVC-->
+        <!--News Feed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ArticleFeedVC" customModule="News2Day" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                             <constraint firstAttribute="bottom" secondItem="MHo-Wh-nMv" secondAttribute="bottom" id="vvP-vA-BAv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NI7-TH-Jg5"/>
+                    <navigationItem key="navigationItem" title="News Feed" id="NI7-TH-Jg5"/>
                     <connections>
                         <outlet property="collectionView" destination="MHo-Wh-nMv" id="Tlg-Cq-4h7"/>
                         <segue destination="Udb-2V-gEr" kind="show" identifier="goToDetail" id="Fm4-wS-RQM"/>
@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbY-Nq-ADe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -130,8 +130,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lbt-ZU-MLC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2lM-yj-9Ij">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="2lM-yj-9Ij">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
