@@ -15,7 +15,7 @@ class CacheManager {
     static func saveData(forURL url: String, imageData: Data) {
         
         // Save the image data along with URL
-        imageDictionary[forURL url] = imageData
+        imageDictionary[url] = imageData
     }
     static func retrieveData (forURL url: String) -> Data? {
         
