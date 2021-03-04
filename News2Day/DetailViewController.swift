@@ -27,19 +27,17 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         // check that there is a url
-        if articleUrl != nil {
             
         //create the url object
-        let url = URL(string: articleUrl!)
-            
+    
         // couldnt create the url object
-        guard url != nil else {
+        guard let article = articleUrl, let url = URL(string: article)
+                        else {
                 
             return
         }
-            
         // create the url request object
-        let request = URLRequest (url: url!)
+        let request = URLRequest (url: url)
             
         //start spinner
             spinner.alpha = 1
@@ -55,8 +53,6 @@ class DetailViewController: UIViewController {
         }
         
     }
-    
-}
 
 extension DetailViewController:WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

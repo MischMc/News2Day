@@ -41,11 +41,13 @@ class ArticleFeedVC: UIViewController {
         let article = articles[indexPath.row]
         
         // get a reference to the detail view controller
-        let detailVC = segue.destination as! DetailViewController
-        
-        // Pass the article URL to the detail view controller
-        detailVC.articleUrl = article.url!
-        
+        if let detailVC = segue.destination as? DetailViewController {
+         
+            // Pass the article URL to the detail view controller
+            detailVC.articleUrl = article.url!
+            
+        }
+       
     }
 }
 
@@ -61,6 +63,8 @@ extension ArticleFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
         // get a cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath)as!ArticleCell
         
+       //read up -  collectionview.register
+        
         //get the article that the collectionview is asking about
         let article = articles[indexPath.row]
         
@@ -74,6 +78,7 @@ extension ArticleFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
+        
         // user has just selected an item, trigger the segue to go to detail
         performSegue(withIdentifier: "goToDetail", sender: self)
     }
