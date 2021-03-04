@@ -31,9 +31,8 @@ class DetailViewController: UIViewController {
         //create the url object
     
         // couldnt create the url object
-        guard let article = articleUrl, let url = URL(string: article)
-                        else {
-                
+        guard let article = articleUrl, let url = URL(string: article) else {
+            
             return
         }
         // create the url request object

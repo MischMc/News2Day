@@ -8,7 +8,6 @@
 import Foundation
 
 struct JSONObjectOverview:Decodable {
-    
-    var totalResults: Int?
-    var articles: [ArticleKeys]?
+    var totalResults: Int
+    var articles: [ArticleKeys]
 }

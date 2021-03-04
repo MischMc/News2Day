@@ -13,7 +13,8 @@ class ArticleFeedVC: UIViewController {
     
     var model = ArticleModel()
     var articles = [ArticleKeys]()
-    
+    var selectedIndexPath: IndexPath?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,7 @@ class ArticleFeedVC: UIViewController {
         model.delegate = self
         model.getArticles()
     }
-    
-    var selectedIndexPath: IndexPath?
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // detect which indexPath the user selected
@@ -61,16 +60,15 @@ extension ArticleFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // get a cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath)as!ArticleCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
         
        //read up -  collectionview.register
         
         //get the article that the collectionview is asking about
-        let article = articles[indexPath.row]
-        
+        let article = articles[indexPath.item]
         
         // customize it
-        cell.displayArticle(_article: article)
+        cell.configure(with: article)
         
         // Return the cell
         return cell
@@ -84,15 +82,11 @@ extension ArticleFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
 }
-extension ArticleFeedVC: ArticleModelProtocol {
-    
-    // MARK: - Article Model Protocol Methods
-    
-    func articlesRetrieved(_articles: [ArticleKeys]) {
-        
+extension ArticleFeedVC: ArticleModelDelegate {
+    func articleModel(_ articleModel: ArticleModel, didReceiveArticles articles: [ArticleKeys]) {        
         //set the articles property of the view controller to the articles passed back from the model
         
-        self.articles = _articles
+        self.articles = articles
         
         //refresh the collectionView
         collectionView.reloadData()
