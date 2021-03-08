@@ -12,7 +12,7 @@ class NewsFeedVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var model = ArticleFetcher()
-    var articles = [ArticleKeys]()
+    var articles = [Article]()
 
     
     override func viewDidLoad() {
@@ -62,7 +62,7 @@ extension NewsFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
 }
 extension NewsFeedVC: ArticleFetcherDelegate {
-    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles: [ArticleKeys]) {
+    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles: [Article]) {
     
        
 

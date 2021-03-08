@@ -11,9 +11,9 @@ import UIKit
 
 class DetailVC: UIViewController {
     
-    let article: ArticleKeys
+    let article: Article
     
-    init(article: ArticleKeys) {
+    init(article: Article) {
         self.article = article
         super.init(nibName: nil, bundle: nil)
     }

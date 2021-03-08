@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArticleFetcherDelegate: AnyObject {
-    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles:[ArticleKeys])
+    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles:[Article])
 }
 
 class ArticleFetcher {
@@ -24,7 +24,7 @@ class ArticleFetcher {
             do {
                 // Parse the JSON into JSONObject
                 let decoder = JSONDecoder()
-                let feed = try decoder.decode(JSONObjectOverview.self, from: data)
+                let feed = try decoder.decode(ArticleFeedAPIResponse.self, from: data)
                 let articles = feed.articles
                 
                 //pass it back to the view controller in the main thread

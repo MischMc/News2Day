@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JSONObjectOverview:Decodable {
+struct ArticleFeedAPIResponse:Decodable {
     var totalResults: Int
-    var articles: [ArticleKeys]
+    var articles: [Article]
 }

@@ -11,9 +11,9 @@ class ArticleCell: UICollectionViewCell {
     
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var articleImageView: UIImageView!
-    var articleToDisplay: ArticleKeys?
+    var articleToDisplay: Article?
     
-    func configure(with article: ArticleKeys) {
+    func configure(with article: Article) {
         
         //clean up the cell to display the image view
         articleImageView.image = nil
