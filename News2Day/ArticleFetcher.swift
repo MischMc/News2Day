@@ -1,5 +1,5 @@
 //
-//  ArticleModel.swift
+//  ArticleFetcher.swift
 //  News2Day
 //
 //  Created by Misch McNamara on 2021/02/18.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol ArticleModelDelegate: AnyObject {
-    func articleModel(_ articleModel: ArticleModel, didReceiveArticles articles:[ArticleKeys])
+protocol ArticleFetcherDelegate: AnyObject {
+    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles:[ArticleKeys])
 }
 
-class ArticleModel {
+class ArticleFetcher {
     
-    weak var delegate: ArticleModelDelegate?
+    weak var delegate: ArticleFetcherDelegate?
     
     func getArticles() {
         let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=037e3e467b1a4147ab81ffc899571fc9")!
@@ -29,7 +29,7 @@ class ArticleModel {
                 
                 //pass it back to the view controller in the main thread
                 DispatchQueue.main.async {
-                    self.delegate?.articleModel(self, didReceiveArticles: articles)
+                    self.delegate?.articleFetcher(self, didReceiveArticles: articles)
                 }
             }
             catch  {
