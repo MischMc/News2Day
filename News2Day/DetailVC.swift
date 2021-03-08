@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  DetailVC.swift
 //  News2Day
 //
 //  Created by Misch McNamara on 2021/02/23.
@@ -24,8 +24,9 @@ class DetailVC: UIViewController {
     
     
     override func viewDidLoad() {
+                
         super.viewDidLoad()
-        
+        navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .systemBackground
         
         let imageView = UIImageView()
@@ -38,30 +39,36 @@ class DetailVC: UIViewController {
             imageView.clipsToBounds = true
             
         }
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        //imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let articleTitle = UILabel()
         articleTitle.text = article.title
-        articleTitle.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        articleTitle.font = UIFont.preferredFont(forTextStyle: .title2)
         articleTitle.textColor = UIColor.label
         articleTitle.adjustsFontForContentSizeCategory = true
         articleTitle.numberOfLines = 4
         
         let authorName = UILabel()
         authorName.text = article.author
-        authorName.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        authorName.font = UIFont.preferredFont(forTextStyle: .title3)
         authorName.textColor = UIColor.secondaryLabel
         authorName.adjustsFontForContentSizeCategory = true
         authorName.numberOfLines = 2
         
         let articleDescription = UILabel()
-        articleDescription.text = "This will be the article description"
-        articleDescription.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        articleDescription.text = article.description
+        articleDescription.font = UIFont.preferredFont(forTextStyle: .body)
         articleDescription.textColor = UIColor.secondaryLabel
         articleDescription.adjustsFontForContentSizeCategory = true
         articleDescription.numberOfLines = 6
         
-        let stackView = UIStackView (arrangedSubviews: [articleTitle,authorName,articleDescription])
+        let textView = UITextView()
+        textView.text = article.content
+        textView.font = .preferredFont(forTextStyle: .body)
+        textView.adjustsFontForContentSizeCategory = true
+        textView.isScrollEnabled = false
+        
+        let stackView = UIStackView (arrangedSubviews: [articleTitle,authorName,articleDescription,imageView,textView])
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -69,20 +76,17 @@ class DetailVC: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackView)
-        view.addSubview(imageView)
         
         NSLayoutConstraint.activate ([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 200),
-            stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 16)
-            
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        
         ])
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+            
         ])
         
         

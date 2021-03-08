@@ -74,7 +74,7 @@
                             <constraint firstAttribute="bottom" secondItem="MHo-Wh-nMv" secondAttribute="bottom" id="vvP-vA-BAv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News Feed" id="NI7-TH-Jg5"/>
+                    <navigationItem key="navigationItem" title="News Feed" id="lPl-k7-yiX"/>
                     <connections>
                         <outlet property="collectionView" destination="MHo-Wh-nMv" id="Tlg-Cq-4h7"/>
                     </connections>

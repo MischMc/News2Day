@@ -25,7 +25,12 @@ class ArticleFetcher {
                 // Parse the JSON into JSONObject
                 let decoder = JSONDecoder()
                 let feed = try decoder.decode(ArticleFeedAPIResponse.self, from: data)
-                let articles = feed.articles
+                // if there are no images or content filter it out of the news feed
+                let articles = feed.articles.filter({ $0.urlToImage != nil && $0.content != nil })
+                
+                
+                let originalJSON = try! JSONSerialization.jsonObject(with: data, options: .init(rawValue: 0))
+                print(originalJSON)
                 
                 //pass it back to the view controller in the main thread
                 DispatchQueue.main.async {
