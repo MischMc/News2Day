@@ -25,6 +25,7 @@ class ArticleFetcher {
                 // Parse the JSON into JSONObject
                 let decoder = JSONDecoder()
                 let feed = try decoder.decode(ArticleFeedAPIResponse.self, from: data)
+                
                 // if there are no images or content filter it out of the news feed
                 let articles = feed.articles.filter({ $0.urlToImage != nil && $0.content != nil })
                 

@@ -11,6 +11,8 @@ class ArticleCell: UICollectionViewCell {
     
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var authorName: UILabel!
+    
     var articleToDisplay: Article?
     
     func configure(with article: Article) {
@@ -20,6 +22,8 @@ class ArticleCell: UICollectionViewCell {
         articleImageView.alpha = 0
         headlineLabel.text = ""
         headlineLabel.alpha = 0
+        authorName.text = ""
+        authorName.alpha = 0
         
         //keep a reference to the article
         articleToDisplay = article
@@ -27,12 +31,14 @@ class ArticleCell: UICollectionViewCell {
         
         //set the headline
         headlineLabel.text = article.title
-        
+        authorName.text = article.author
+
         //animate the label into view
         UIView.animate(withDuration: 0.6, delay: 0, options:.curveEaseOut,
                        animations:{
                         
                         self.headlineLabel.alpha = 1
+                        self.authorName.alpha = 1
                         
                        }, completion: nil)
         

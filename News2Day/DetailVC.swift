@@ -46,21 +46,21 @@ class DetailVC: UIViewController {
         articleTitle.font = UIFont.preferredFont(forTextStyle: .title2)
         articleTitle.textColor = UIColor.label
         articleTitle.adjustsFontForContentSizeCategory = true
-        articleTitle.numberOfLines = 4
+        articleTitle.numberOfLines = 0
         
         let authorName = UILabel()
         authorName.text = article.author
         authorName.font = UIFont.preferredFont(forTextStyle: .title3)
         authorName.textColor = UIColor.secondaryLabel
         authorName.adjustsFontForContentSizeCategory = true
-        authorName.numberOfLines = 2
+        authorName.numberOfLines = 0
         
         let articleDescription = UILabel()
         articleDescription.text = article.description
         articleDescription.font = UIFont.preferredFont(forTextStyle: .body)
         articleDescription.textColor = UIColor.secondaryLabel
         articleDescription.adjustsFontForContentSizeCategory = true
-        articleDescription.numberOfLines = 6
+        articleDescription.numberOfLines = 0
         
         let textView = UITextView()
         textView.text = article.content

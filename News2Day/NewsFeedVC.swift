@@ -13,7 +13,7 @@ class NewsFeedVC: UIViewController {
     
     var model = ArticleFetcher()
     var articles = [Article]()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class NewsFeedVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        // get the articles from the article model
+        // get the articles from the ArticleFetcher
         model.delegate = self
         model.getArticles()
     }
@@ -39,7 +39,7 @@ extension NewsFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
         // get a cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
         
-       //read up -  collectionview.register
+        //read up -  collectionview.register
         
         //get the article that the collectionview is asking about
         let article = articles[indexPath.item]
@@ -56,17 +56,17 @@ extension NewsFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let article = articles[selectedIndex]
         let detailVC = DetailVC(article: article)
         navigationController?.pushViewController(detailVC, animated: true)
-    
+        
     }
     
 }
 extension NewsFeedVC: ArticleFetcherDelegate {
     func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles: [Article]) {
-    
-       
-
+        
+        
+        
         self.articles = articles
-
+        
         //refresh the collectionView
         collectionView.reloadData()
     }
