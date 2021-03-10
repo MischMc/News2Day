@@ -20,6 +20,7 @@
 		CDAD460B25DE6F1B00183B53 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD460A25DE6F1B00183B53 /* Article.swift */; };
 		CDAD460F25DE71D300183B53 /* ArticleFeedAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD460E25DE71D300183B53 /* ArticleFeedAPIResponse.swift */; };
 		CDB92D9A25F636E600DD15CD /* ArticleFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD461125DE72D300183B53 /* ArticleFetcher.swift */; };
+		CDF6E5B725F8E2B2003D105D /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E5B625F8E2B2003D105D /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		CDAD460A25DE6F1B00183B53 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		CDAD460E25DE71D300183B53 /* ArticleFeedAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFeedAPIResponse.swift; sourceTree = "<group>"; };
 		CDAD461125DE72D300183B53 /* ArticleFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFetcher.swift; sourceTree = "<group>"; };
+		CDF6E5B625F8E2B2003D105D /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				CD98570E25E93EF900F3A38B /* CacheManager.swift */,
 				CDA9D0CA25E7C1FE00EC5DCE /* ArticleCell.swift */,
 				CDAD460E25DE71D300183B53 /* ArticleFeedAPIResponse.swift */,
+				CDF6E5B625F8E2B2003D105D /* SectionHeader.swift */,
 				CDAD45FE25DD330100183B53 /* Assets.xcassets */,
 				CDAD460025DD330100183B53 /* LaunchScreen.storyboard */,
 				CDAD460325DD330100183B53 /* Info.plist */,
@@ -170,6 +173,7 @@
 				CDA9D0CB25E7C1FE00EC5DCE /* ArticleCell.swift in Sources */,
 				CD98570F25E93EF900F3A38B /* CacheManager.swift in Sources */,
 				CDB92D9A25F636E600DD15CD /* ArticleFetcher.swift in Sources */,
+				CDF6E5B725F8E2B2003D105D /* SectionHeader.swift in Sources */,
 				CDAD460F25DE71D300183B53 /* ArticleFeedAPIResponse.swift in Sources */,
 				CDAD460B25DE6F1B00183B53 /* Article.swift in Sources */,
 				CDAD45FA25DD330000183B53 /* NewsFeedVC.swift in Sources */,

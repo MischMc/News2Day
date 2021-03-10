@@ -24,10 +24,20 @@ class NewsFeedVC: UIViewController {
         // get the articles from the ArticleFetcher
         model.delegate = self
         model.getArticles()
+        
+        collectionView?.register(SectionHeader.self, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier:SectionHeader.identifier)
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerLabel = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
+        
+        headerLabel.configure(with: "Today's News")
+        return headerLabel
     }
 }
 
-extension NewsFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
+
+extension NewsFeedVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -49,6 +59,10 @@ extension NewsFeedVC: UICollectionViewDelegate, UICollectionViewDataSource {
         
         // Return the cell
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return .init(width: min(200, collectionView.bounds.width), height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -29,23 +29,23 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleCell" id="aF2-7p-OBT" customClass="ArticleCell" customModule="News2Day" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="0.0" width="161" height="165"/>
+                                        <rect key="frame" x="8" y="0.0" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4Bn-fk-moL">
-                                            <rect key="frame" x="0.0" y="0.0" width="161" height="165"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-Yu-Pv4">
-                                                    <rect key="frame" x="0.0" y="2.5" width="162.5" height="105"/>
+                                                    <rect key="frame" x="0.0" y="2.5" width="151.5" height="90"/>
                                                     <imageReference key="image" image="folder.fill.badge.minus" catalog="system" symbolScale="small"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw1-Jw-Y66">
-                                                    <rect key="frame" x="8" y="122.5" width="153" height="14.5"/>
+                                                    <rect key="frame" x="8" y="107.5" width="142" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-mL-ij9" userLabel="Author Name">
-                                                    <rect key="frame" x="8" y="146.5" width="31" height="14.5"/>
+                                                    <rect key="frame" x="8" y="131.5" width="31" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                                                 <constraint firstItem="lw1-Jw-Y66" firstAttribute="leading" secondItem="4Bn-fk-moL" secondAttribute="leadingMargin" id="fwh-Te-MXD"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="161" height="165"/>
+                                        <size key="customSize" width="150" height="150"/>
                                         <connections>
                                             <outlet property="articleImageView" destination="3fD-Yu-Pv4" id="3mA-Nc-yoX"/>
                                             <outlet property="authorName" destination="Jvp-mL-ij9" id="MZx-Ww-Zhp"/>
