@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArticleFetcherDelegate: AnyObject {
-    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles:[Article])
+    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveSections sections:[Section])
 }
 
 class ArticleFetcher {
@@ -16,6 +16,7 @@ class ArticleFetcher {
     weak var delegate: ArticleFetcherDelegate?
     
     func getArticles() {
+        
         let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=037e3e467b1a4147ab81ffc899571fc9")!
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil, let data = data else {
@@ -29,13 +30,25 @@ class ArticleFetcher {
                 // if there are no images or content filter it out of the news feed
                 let articles = feed.articles.filter({ $0.urlToImage != nil && $0.content != nil })
                 
+                let articleFeed = articles
                 
+                let firstArticles = articles.prefix(4)
+        
+                let secondArticles = articles.suffix(4)
+                
+                let sections = [
+                    
+                    Section(title: "Todays News", articles: Array(firstArticles)),
+                    Section(title: "Yesterdays News", articles: Array(secondArticles))
+                ]
+
+               
                 let originalJSON = try! JSONSerialization.jsonObject(with: data, options: .init(rawValue: 0))
                 print(originalJSON)
                 
                 //pass it back to the view controller in the main thread
                 DispatchQueue.main.async {
-                    self.delegate?.articleFetcher(self, didReceiveArticles: articles)
+                    self.delegate?.articleFetcher(self, didReceiveSections: sections)
                 }
             }
             catch  {
@@ -43,4 +56,19 @@ class ArticleFetcher {
             }
         }.resume()
     }
+    
+    
 }
+
+struct Section {
+    
+    let title: String
+    let articles: [Article]
+}
+
+
+
+
+
+   
+

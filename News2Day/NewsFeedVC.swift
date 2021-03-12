@@ -12,11 +12,12 @@ class NewsFeedVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var model = ArticleFetcher()
-    var articles = [Article]()
+    var sections = [Section]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // set the view controller as the data source and delegate of the collection View
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -31,7 +32,7 @@ class NewsFeedVC: UIViewController {
         
         let headerLabel = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
         
-        headerLabel.configure(with: "Today's News")
+        headerLabel.configure(with: sections[indexPath.section].title)
         return headerLabel
     }
 }
@@ -39,25 +40,29 @@ class NewsFeedVC: UIViewController {
 
 extension NewsFeedVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return articles.count
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        sections.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sections[section].articles.count
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // get a cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
         
-        //read up -  collectionview.register
         
-        //get the article that the collectionview is asking about
-        let article = articles[indexPath.item]
         
-        // customize it
-        cell.configure(with: article)
         
-        // Return the cell
+        let section = sections[indexPath.section]
+        let currentArticle = section.articles[indexPath.item]
+        
+        cell.configure(with: currentArticle)
+        
+        
         return cell
     }
     
@@ -66,20 +71,20 @@ extension NewsFeedVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedIndex = indexPath.item
-        let article = articles[selectedIndex]
-        let detailVC = DetailVC(article: article)
+      
+        let section = sections[indexPath.section]
+        let currentArticle = section.articles[indexPath.item]
+        let detailVC = DetailVC(article: currentArticle)
         navigationController?.pushViewController(detailVC, animated: true)
         
     }
     
 }
 extension NewsFeedVC: ArticleFetcherDelegate {
-    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveArticles articles: [Article]) {
+    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveSections sections: [Section]) {
         
         
-        
-        self.articles = articles
+        self.sections = sections
         
         //refresh the collectionView
         collectionView.reloadData()
