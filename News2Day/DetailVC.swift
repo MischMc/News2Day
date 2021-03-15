@@ -24,7 +24,7 @@ class DetailVC: UIViewController {
     
     
     override func viewDidLoad() {
-                
+        
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .systemBackground
@@ -37,9 +37,9 @@ class DetailVC: UIViewController {
             imageView.image = UIImage(data: imageData)
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
+            imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
             
         }
-        //imageView.translatesAutoresizingMaskIntoConstraints = false
         
         let articleTitle = UILabel()
         articleTitle.text = article.title
@@ -68,31 +68,37 @@ class DetailVC: UIViewController {
         textView.adjustsFontForContentSizeCategory = true
         textView.isScrollEnabled = false
         
+        
+        let scrollView = UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        scrollView.leadingAnchor.constraint(equalTo:view.leadingAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo:view.trailingAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        
         let stackView = UIStackView (arrangedSubviews: [articleTitle,authorName,articleDescription,imageView,textView])
+        scrollView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .leading
         stackView.axis = .vertical
         stackView.spacing = 8
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: view.readableContentGuide.widthAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        view.addSubview(stackView)
         
-        NSLayoutConstraint.activate ([
-            imageView.heightAnchor.constraint(equalToConstant: 200),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-        
-        ])
-        
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.readableContentGuide.leadingAnchor),
-            
-        ])
         
         
         
     }
-
+    
 }
 
 
