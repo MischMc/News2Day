@@ -30,20 +30,33 @@ class ArticleFetcher {
                 
                 // if there are no images or content filter it out of the news feed
                 let articles = feed.articles.filter({ $0.urlToImage != nil && $0.content != nil })
+                var articlesByDay: [Date: [Article]] = [:]
                 
-                let articleFeed = articles
-                
-                let firstArticles = articles.prefix(4)
-        
-                let secondArticles = articles.suffix(4)
-                
-                let sections = [
+                for article in articles {
+                    let date = article.publishedAt ?? Date()
+                    let year = Calendar.current.component(.year, from: date)
+                    let month = Calendar.current.component(.month, from:date)
+                    let day = Calendar.current.component(.day, from: date)
                     
-                    Section(title: "Todays News", articles: Array(firstArticles)),
-                    Section(title: "Yesterdays News", articles: Array(secondArticles))
-                ]
-
-               
+                    let sectionName = Calendar.current.date(from: DateComponents(year: year, month: month, day: day))!
+                    
+                    var articles = articlesByDay[sectionName] ?? []
+                    articles.append(article)
+                    articlesByDay[sectionName] = articles
+                }
+                
+                let keysSorted = articlesByDay.keys.sorted(by: { $0 > $1})
+                
+                var sections: [Section] = []
+                
+                let dateFormatter = DateFormatter()
+                
+                for key in keysSorted {
+                    let articles = articlesByDay[key]!
+                    dateFormatter.dateStyle = .medium
+                    sections.append(.init(title: dateFormatter.string(from: key), articles: articles))
+                }
+                
                 let originalJSON = try! JSONSerialization.jsonObject(with: data, options: .init(rawValue: 0))
                 print(originalJSON)
                 
@@ -71,5 +84,5 @@ struct Section {
 
 
 
-   
+
 
