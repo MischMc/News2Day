@@ -41,8 +41,7 @@ class ArticleCell: UICollectionViewCell {
                         self.authorName.alpha = 1
                         
                        }, completion: nil)
-        
-        //download and display  the image
+       
         
         //check that thr article has an image
         guard article.urlToImage != nil else {

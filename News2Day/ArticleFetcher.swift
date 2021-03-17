@@ -17,7 +17,7 @@ class ArticleFetcher {
     
     func getArticles() {
         
-        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=037e3e467b1a4147ab81ffc899571fc9")!
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=037e3e467b1a4147ab81ffc899571fc9&pageSize=100")!
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil, let data = data else {
                 return
