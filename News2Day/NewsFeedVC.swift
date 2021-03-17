@@ -51,18 +51,10 @@ extension NewsFeedVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // get a cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
-        
-        
-        
-        
         let section = sections[indexPath.section]
         let currentArticle = section.articles[indexPath.item]
-        
         cell.configure(with: currentArticle)
-        
-        
         return cell
     }
     
@@ -71,7 +63,7 @@ extension NewsFeedVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      
+        
         let section = sections[indexPath.section]
         let currentArticle = section.articles[indexPath.item]
         let detailVC = DetailVC(article: currentArticle)
