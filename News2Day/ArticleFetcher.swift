@@ -23,8 +23,9 @@ class ArticleFetcher {
                 return
             }
             do {
-                // Parse the JSON into JSONObject
+                // Decide JSON data and convert string into date
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
                 let feed = try decoder.decode(ArticleFeedAPIResponse.self, from: data)
                 
                 // if there are no images or content filter it out of the news feed
