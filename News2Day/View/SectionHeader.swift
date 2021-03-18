@@ -14,9 +14,11 @@ class SectionHeader: UICollectionReusableView {
     private let headerLabel:UILabel =  {
         let headerLabel = UILabel()
         headerLabel.text = "Section Header"
-        headerLabel.textAlignment = .left
+        headerLabel.textAlignment = .center
         headerLabel.textColor = .label
-        headerLabel.font = .preferredFont(forTextStyle: .subheadline)
+        headerLabel.font = .preferredFont(forTextStyle: .title3)
+        headerLabel.backgroundColor = .quaternarySystemFill
+    
         return headerLabel
         
     }()
@@ -29,14 +31,20 @@ class SectionHeader: UICollectionReusableView {
         super.init(frame: frame)
         backgroundColor = .systemBackground
         addSubview(headerLabel)
+        configureConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        headerLabel.frame = bounds
+        
+    func configureConstraints() {
+        
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.leadingAnchor.constraint(equalTo:leadingAnchor).isActive = true
+        headerLabel.topAnchor.constraint(equalTo:topAnchor ).isActive = true
+        headerLabel.trailingAnchor.constraint(equalTo:trailingAnchor ).isActive = true
+        headerLabel.bottomAnchor.constraint(equalTo:bottomAnchor ).isActive = true
     }
     
 }

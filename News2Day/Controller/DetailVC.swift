@@ -37,8 +37,6 @@ class DetailVC: UIViewController {
             imageView.image = UIImage(data: imageData)
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
-            imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-            
         }
         
         let articleTitle = UILabel()
@@ -93,12 +91,9 @@ class DetailVC: UIViewController {
         stackView.widthAnchor.constraint(equalTo: view.readableContentGuide.widthAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        
-        
-        
-        
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 0.5, constant: 0).isActive = true
+
     }
-    
 }
 
 
