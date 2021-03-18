@@ -54,6 +54,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD5E17F52603477100CE18AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDAD460A25DE6F1B00183B53 /* Article.swift */,
+				CD98570E25E93EF900F3A38B /* CacheManager.swift */,
+				CDAD460E25DE71D300183B53 /* ArticleFeedAPIResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CD5E17F62603478000CE18AF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CDA9D0CA25E7C1FE00EC5DCE /* ArticleCell.swift */,
+				CDF6E5B625F8E2B2003D105D /* SectionHeader.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CD5E17F72603478E00CE18AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CDA9D0C425E51DE600EC5DCE /* DetailVC.swift */,
+				CDAD45F925DD330000183B53 /* NewsFeedVC.swift */,
+				CDAD461125DE72D300183B53 /* ArticleFetcher.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CD6302D825ED270000A4EEF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,17 +111,12 @@
 		CDAD45F425DD330000183B53 /* News2Day */ = {
 			isa = PBXGroup;
 			children = (
+				CD5E17F72603478E00CE18AF /* Controller */,
+				CD5E17F62603478000CE18AF /* View */,
+				CD5E17F52603477100CE18AF /* Model */,
 				CDAD45F525DD330000183B53 /* AppDelegate.swift */,
 				CDAD45F725DD330000183B53 /* SceneDelegate.swift */,
-				CDAD45F925DD330000183B53 /* NewsFeedVC.swift */,
-				CDA9D0C425E51DE600EC5DCE /* DetailVC.swift */,
 				CDAD45FB25DD330000183B53 /* Main.storyboard */,
-				CDAD460A25DE6F1B00183B53 /* Article.swift */,
-				CDAD461125DE72D300183B53 /* ArticleFetcher.swift */,
-				CD98570E25E93EF900F3A38B /* CacheManager.swift */,
-				CDA9D0CA25E7C1FE00EC5DCE /* ArticleCell.swift */,
-				CDAD460E25DE71D300183B53 /* ArticleFeedAPIResponse.swift */,
-				CDF6E5B625F8E2B2003D105D /* SectionHeader.swift */,
 				CDAD45FE25DD330100183B53 /* Assets.xcassets */,
 				CDAD460025DD330100183B53 /* LaunchScreen.storyboard */,
 				CDAD460325DD330100183B53 /* Info.plist */,

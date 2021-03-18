@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArticleFetcherDelegate: AnyObject {
-    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveSections sections:[Section])
+    func articleFetcher(_ articleFetcher: ArticleFetcher, didReceiveSections sections: [Section])
 }
 
 class ArticleFetcher {
@@ -30,7 +30,7 @@ class ArticleFetcher {
                 
                 // if there are no images or content filter it out of the news feed
                 let articles = feed.articles.filter({ $0.urlToImage != nil && $0.content != nil })
-                var articlesByDay: [Date: [Article]] = [:]
+                var articlesByDay: [Date: Array<Article>] = [:]
                 
                 for article in articles {
                     let date = article.publishedAt ?? Date()
@@ -45,20 +45,19 @@ class ArticleFetcher {
                     articlesByDay[sectionName] = articles
                 }
                 
-                let keysSorted = articlesByDay.keys.sorted(by: { $0 > $1})
+                let daysSorted = articlesByDay.keys.sorted(by: { $0 > $1})
                 
                 var sections: [Section] = []
                 
                 let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .full
                 
-                for key in keysSorted {
-                    let articles = articlesByDay[key]!
-                    dateFormatter.dateStyle = .medium
-                    sections.append(.init(title: dateFormatter.string(from: key), articles: articles))
+                for day in daysSorted {
+                    let articles = articlesByDay[day]!
+                    let dayString = dateFormatter.string(from: day)
+                    let section = Section(title: dayString, articles: articles)
+                    sections.append(section)
                 }
-                
-                let originalJSON = try! JSONSerialization.jsonObject(with: data, options: .init(rawValue: 0))
-                print(originalJSON)
                 
                 //pass it back to the view controller in the main thread
                 DispatchQueue.main.async {
