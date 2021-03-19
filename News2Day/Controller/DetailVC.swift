@@ -21,6 +21,11 @@ class DetailVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    @objc func openWebPage() {
+        
+        let webVC = WebVC(article: self.article)
+        navigationController?.pushViewController(webVC, animated: true)
+    }
     
     
     override func viewDidLoad() {
@@ -28,6 +33,9 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = .systemBackground
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "safari"), style: .plain, target: self, action: #selector(openWebPage))
+
         
         let imageView = UIImageView()
         
