@@ -23,12 +23,10 @@ class ArticleFetcher {
                 return
             }
             do {
-                // Decide JSON data and convert string into date
+                
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 let feed = try decoder.decode(ArticleFeedAPIResponse.self, from: data)
-                
-                // if there are no images or content filter it out of the news feed
                 let articles = feed.articles.filter({ $0.urlToImage != nil && $0.content != nil })
                 var articlesByDay: [Date: Array<Article>] = [:]
                 
@@ -59,7 +57,6 @@ class ArticleFetcher {
                     sections.append(section)
                 }
                 
-                //pass it back to the view controller in the main thread
                 DispatchQueue.main.async {
                     self.delegate?.articleFetcher(self, didReceiveSections: sections)
                 }

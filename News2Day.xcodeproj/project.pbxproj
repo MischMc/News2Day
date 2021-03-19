@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CD6302DA25ED270000A4EEF8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6302D925ED270000A4EEF8 /* WebKit.framework */; };
 		CD98570F25E93EF900F3A38B /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98570E25E93EF900F3A38B /* CacheManager.swift */; };
+		CDA766082603A8F8008ACEBA /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA766072603A8F8008ACEBA /* WebVC.swift */; };
 		CDA9D0C525E51DE600EC5DCE /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9D0C425E51DE600EC5DCE /* DetailVC.swift */; };
 		CDA9D0CB25E7C1FE00EC5DCE /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9D0CA25E7C1FE00EC5DCE /* ArticleCell.swift */; };
 		CDAD45F625DD330000183B53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD45F525DD330000183B53 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		CD6302D925ED270000A4EEF8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CD98570E25E93EF900F3A38B /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		CDA766072603A8F8008ACEBA /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		CDA9D0C425E51DE600EC5DCE /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		CDA9D0CA25E7C1FE00EC5DCE /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		CDAD45F225DD330000183B53 /* News2Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News2Day.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 				CDA9D0C425E51DE600EC5DCE /* DetailVC.swift */,
 				CDAD45F925DD330000183B53 /* NewsFeedVC.swift */,
 				CDAD461125DE72D300183B53 /* ArticleFetcher.swift */,
+				CDA766072603A8F8008ACEBA /* WebVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				CDAD45F625DD330000183B53 /* AppDelegate.swift in Sources */,
 				CDAD45F825DD330000183B53 /* SceneDelegate.swift in Sources */,
 				CDA9D0C525E51DE600EC5DCE /* DetailVC.swift in Sources */,
+				CDA766082603A8F8008ACEBA /* WebVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,11 +17,8 @@ class NewsFeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set the view controller as the data source and delegate of the collection View
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        // get the articles from the ArticleFetcher
         model.delegate = self
         model.getArticles()
         
@@ -77,7 +74,6 @@ extension NewsFeedVC: ArticleFetcherDelegate {
         
         self.sections = sections
         
-        //refresh the collectionView
         self.collectionView.reloadData()
     }
 }
