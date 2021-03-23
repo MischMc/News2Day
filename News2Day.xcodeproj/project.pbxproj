@@ -60,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				CDAD460A25DE6F1B00183B53 /* Article.swift */,
+				CDAD461125DE72D300183B53 /* ArticleFetcher.swift */,
 				CD98570E25E93EF900F3A38B /* CacheManager.swift */,
 				CDAD460E25DE71D300183B53 /* ArticleFeedAPIResponse.swift */,
 			);
@@ -80,7 +81,6 @@
 			children = (
 				CDA9D0C425E51DE600EC5DCE /* DetailVC.swift */,
 				CDAD45F925DD330000183B53 /* NewsFeedVC.swift */,
-				CDAD461125DE72D300183B53 /* ArticleFetcher.swift */,
 				CDA766072603A8F8008ACEBA /* WebVC.swift */,
 			);
 			path = Controller;
